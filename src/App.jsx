@@ -4,6 +4,12 @@ import Login from './Login'
 import UpdatePassword from './Updatepassword'
 
 function App() {
+  // --- Auth state ---
+  const [session, setSession] = useState(null)
+  const [authLoading, setAuthLoading] = useState(true)
+  const [isRecovery, setIsRecovery] = useState(false)
+
+
   const [transactions, setTransactions] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   

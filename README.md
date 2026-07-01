@@ -1,18 +1,102 @@
-# React + Vite
+# Uangku - Personal Finance Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-Currently, two official plugins are available:
+**Uangku** is a lightweight, no-frills personal finance tracker built to log daily income and expenses in seconds. Designed around a student's everyday spending habits — from campus needs to coffee runs — every transaction is synced live to a Supabase database, so nothing gets lost when the browser cache is cleared.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live Demo:** [uangku-app-dusky.vercel.app](https://uangku-app-dusky.vercel.app/)
 
-## React Compiler
+## Key Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- 📝 **Quick Logging:** Add an income or expense entry in seconds with title, amount, type, and category.
+- 🏷️ **Student-Friendly Categories:** Preset categories like `Kebutuhan Kuliah`, `Kopi & Warkop`, `Top-up & Game`, and `Trading & Investasi` ready out of the box.
+- 🔍 **Instant Search:** Filter transaction history in real time by title or category.
+- ☁️ **Cloud-Synced Data:** Every transaction is persisted in Supabase (Postgres), not just local browser storage.
+- ⚡ **Fast & Minimal:** Built on React 19 + Vite for near-instant load times and a clean, distraction-free interface.
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [Node.js](https://nodejs.org/) & npm
+- A free [Supabase](https://supabase.com/) project
+
+### 1. Database Setup
+
+1. Create a new Supabase project.
+2. Inside the SQL editor (or Table Editor), create a `transactions` table with the following columns:
+
+   | Column       | Type        | Notes                          |
+   |--------------|-------------|---------------------------------|
+   | `id`         | int8 (PK)   | auto increment                  |
+   | `created_at` | timestamptz | default `now()`                 |
+   | `title`      | text        | transaction note/title          |
+   | `amount`     | int8        | transaction amount              |
+   | `type`       | text        | `pemasukan` or `pengeluaran`    |
+   | `category`   | text        | transaction category            |
+
+3. Copy your **Project URL** and **anon public key** from `Project Settings → API`.
+
+### 2. Frontend Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/BGS06/uangku-app.git
+cd uangku-app
+
+# Install dependencies
+npm install
+
+# Configure environment variables
+# create a .env file in the root, then add:
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Run the development server
+npm run dev
+```
+
+The app will start at `http://localhost:5173`.
+
+### 3. Build for Production
+
+```bash
+npm run build
+npm run preview
+```
+
+## Project Structure
+
+```
+uangku-app/
+├── public/                # Static assets (favicon, icons)
+├── src/
+│   ├── assets/             # Images and other assets
+│   ├── App.jsx               # Main application component
+│   ├── App.css                # Component styling
+│   ├── index.css                # Global styling
+│   ├── main.jsx                   # React entry point
+│   └── supabaseClient.js           # Supabase connection config
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Roadmap
+
+- [ ] User authentication (login/register)
+- [ ] Balance summary & spending charts by category
+- [ ] Filter transactions by date/month
+- [ ] Edit & delete transactions
+- [ ] Dark mode
+
+## Author
+
+**Bagas Bintang Saputro**
+
+Undergraduate Informatics Student at Telkom University
+
+GitHub: [https://github.com/BGS06](https://github.com/BGS06)

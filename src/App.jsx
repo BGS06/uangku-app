@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from './supabaseClient'
 import Login from './Login'
 import UpdatePassword from './Updatepassword'
-
+// Trigger deploy
 function App() {
   // --- Auth state ---
   const [session, setSession] = useState(null)

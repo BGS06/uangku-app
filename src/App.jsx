@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabaseClient'
 import Login from './Login'
-import UpdatePassword from './UpdatePassword'
+import UpdatePassword from './Updatepassword'
 
 function App() {
   // --- Auth state ---

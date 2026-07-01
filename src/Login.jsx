@@ -97,7 +97,7 @@ function Login() {
         <p>{mode === 'forgot' ? 'Reset password akunmu' : 'Masuk untuk mulai mencatat'}</p>
       </div>
 
-      <div className="form-section auth-card">
+      <div className="auth-card">
         {mode !== 'forgot' && (
           <div className="auth-tabs">
             <button

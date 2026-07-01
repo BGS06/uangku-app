@@ -1,0 +1,129 @@
+/* Styling khusus untuk halaman Autentikasi (Login/Signup) */
+
+.auth-card {
+  background: white;
+  margin: -20px 20px 24px; /* Membuat form sedikit menimpa header biru */
+  padding: 24px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+  border: 1px solid #f3f4f6;
+}
+
+/* Tabs Navigasi (Masuk / Daftar) */
+.auth-tabs {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-tab.active {
+  background-color: white;
+  color: #2563eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Tombol Google */
+.btn-google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 20px;
+}
+
+.btn-google:hover {
+  background-color: #f9fafb;
+}
+
+/* Garis pembatas "atau" */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.auth-divider span {
+  padding: 0 10px;
+}
+
+/* Pesan Error & Success */
+.auth-message {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.auth-message.error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.auth-message.success {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+/* Link Lupa Password & Kembali */
+.auth-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding: 0;
+  display: block;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-link-center {
+  margin: 16px auto 0;
+  text-align: center;
+  width: 100%;
+}

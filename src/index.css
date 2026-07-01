@@ -1,84 +1,115 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
+/* =========================================
+   1. RESET & BASE (Kunci Responsif)
+   ========================================= */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Sangat penting: agar padding tidak menambah lebar elemen */
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f3f4f6; /* Abu-abu muda khas background aplikasi */
-  color: #1f2937;
+  /* Latar belakang abu-abu yang akan terlihat saat dibuka di PC */
+  background-color: #f3f4f6; 
+  font-family: 'Inter', -apple-system, sans-serif;
+  
+  /* Flexbox untuk menengahkan aplikasi di layar besar */
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  color: #1f2937;
 }
 
+/* =========================================
+   2. WADAH UTAMA (app-container)
+   ========================================= */
 .app-container {
   width: 100%;
-  max-width: 480px;
+  max-width: 480px; /* Batas maksimal lebar ala Smartphone */
   min-height: 100vh;
-  background-color: #ffffff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  background-color: #f9fafb;
   position: relative;
-  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header khas aplikasi */
+/* ATURAN KHUSUS UNTUK LAYAR PC/TABLET (Lebar > 480px) */
+@media (min-width: 481px) {
+  .app-container {
+    min-height: 90vh; /* Sedikit jarak dari atas dan bawah layar PC */
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    border-radius: 24px; /* Sudut membulat seperti HP fisik */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* Bayangan estetik */
+    overflow: hidden; /* Mencegah isi aplikasi tumpah ke luar batas */
+  }
+}
+
+/* =========================================
+   3. HEADER & KOMPONEN
+   ========================================= */
 .app-header {
-  background-color: #2563eb; /* Biru profesional */
+  background-color: #2563eb;
   color: white;
-  padding: 24px 20px;
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
-  margin-bottom: -20px;
+  padding: 30px 20px 40px;
+  border-radius: 0 0 24px 24px;
 }
 
 .app-header h1 {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 24px;
   margin-bottom: 4px;
 }
 
 .app-header p {
-  font-size: 13px;
-  opacity: 0.8;
+  font-size: 14px;
+  opacity: 0.9;
 }
 
-/* Form Container */
+.btn-logout {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.btn-logout:hover { background: rgba(255, 255, 255, 0.2); }
+
+/* =========================================
+   4. FORM TRANSAKSI
+   ========================================= */
 .form-section {
   background: white;
-  margin: 0 20px 24px;
+  margin: -24px 20px 20px;
   padding: 20px;
   border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  position: relative;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  position: relative;
 }
 
-.form-group {
-  margin-bottom: 12px;
-}
+.form-group { margin-bottom: 16px; }
 
 .form-label {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  color: #6b7280;
   margin-bottom: 6px;
+  color: #4b5563;
 }
 
 .clean-input, .clean-select {
   width: 100%;
   padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
   font-size: 14px;
-  color: #1f2937;
   outline: none;
   transition: border-color 0.2s;
-  font-family: inherit;
+  background-color: #f9fafb;
 }
 
 .clean-input:focus, .clean-select:focus {
@@ -86,97 +117,83 @@ body {
   background-color: #ffffff;
 }
 
+/* Baris input sejajar yang akan turun ke bawah jika layar HP terlalu kecil */
 .row-inputs {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap; /* Kunci responsif: membolehkan elemen turun baris */
+}
+
+.row-inputs > div {
+  flex: 1;
+  min-width: 130px; /* Batas sempit agar dropdown tidak terpotong */
 }
 
 .btn-submit {
   width: 100%;
-  padding: 14px;
-  border-radius: 10px;
   background-color: #2563eb;
   color: white;
   border: none;
+  padding: 14px;
+  border-radius: 10px;
   font-weight: 600;
-  font-size: 14px;
   cursor: pointer;
-  margin-top: 8px;
-  transition: background-color 0.2s;
+  font-size: 15px;
+  transition: 0.2s;
 }
 
-.btn-submit:active {
-  background-color: #1d4ed8;
+.btn-submit:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
 }
 
-/* List Transaksi */
-.list-section {
-  padding: 0 20px;
-}
+.btn-submit:hover:not(:disabled) { background-color: #1d4ed8; }
+
+/* =========================================
+   5. LIST TRANSAKSI
+   ========================================= */
+.list-section { padding: 0 20px 20px; flex: 1; }
 
 .section-title {
-  font-size: 16px;
   font-weight: 600;
-  color: #374151;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 16px;
+  color: #1f2937;
 }
 
 .search-input {
   width: 100%;
-  padding: 10px 16px;
-  border-radius: 100px;
+  padding: 10px 12px;
   border: 1px solid #e5e7eb;
-  background-color: #f3f4f6;
-  font-size: 13px;
+  border-radius: 8px;
   margin-bottom: 16px;
-  outline: none;
-}
-
-.search-input:focus {
-  border-color: #2563eb;
-  background-color: white;
+  font-size: 14px;
 }
 
 .trx-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.trx-card:last-child {
-  border-bottom: none;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #f3f4f6;
 }
 
 .trx-left {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
 
 .trx-title {
   font-weight: 600;
-  font-size: 14px;
   color: #1f2937;
+  font-size: 15px;
+  margin-bottom: 4px;
 }
 
-.trx-category {
-  font-size: 12px;
-  color: #6b7280;
-}
+.trx-category { font-size: 12px; color: #6b7280; }
 
-.trx-right {
-  text-align: right;
-}
-
-.trx-amount {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.amount-in { color: #10b981; } /* Hijau rapi */
-.amount-out { color: #ef4444; } /* Merah rapi */
+.trx-amount { font-weight: 700; font-size: 14px; }
+.amount-in { color: #16a34a; }
+.amount-out { color: #dc2626; }

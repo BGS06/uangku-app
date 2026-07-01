@@ -24,7 +24,7 @@ function Login() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin,
+        redirectTo: 'https://uangku-app.vercel.app',
       },
     })
     if (error) setMessage({ type: 'error', text: error.message })

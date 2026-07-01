@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabaseClient'
 import Login from './Login'
-import UpdatePassword from './Updatepassword'
-// Trigger deploy
+import UpdatePassword from './UpdatePassword'
+
 function App() {
   // --- Auth state ---
   const [session, setSession] = useState(null)
@@ -18,7 +18,7 @@ function App() {
   const [type, setType] = useState('pengeluaran')
   const [category, setCategory] = useState('Jajan & Makan')
 
-  // Kategori yang di tweak biar lebih fungsional dan rapi aja
+  // Kategori yang di-tweak agar lebih fungsional dan rapi
   const categories = [
     "Jajan & Makan",
     "Kopi & Warkop",

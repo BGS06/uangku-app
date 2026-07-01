@@ -24,7 +24,7 @@ function Login() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: 'https://uangku-app.vercel.app',
+        redirectTo: window.location.origin,
       },
     })
     if (error) setMessage({ type: 'error', text: error.message })
@@ -97,7 +97,7 @@ function Login() {
         <p>{mode === 'forgot' ? 'Reset password akunmu' : 'Masuk untuk mulai mencatat'}</p>
       </div>
 
-      <div className="auth-card">
+      <div className="form-section auth-card">
         {mode !== 'forgot' && (
           <div className="auth-tabs">
             <button

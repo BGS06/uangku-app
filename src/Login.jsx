@@ -3,12 +3,12 @@ import { supabase } from './supabaseClient'
 import './Auth.css'
 
 function Login() {
-  const [mode, setMode] = useState('login') // 'login' | 'signup' | 'forgot'
+  const [mode, setMode] = useState('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState(null) // { type: 'error' | 'success', text }
+  const [message, setMessage] = useState(null) 
 
   const resetMessage = () => setMessage(null)
 
@@ -97,7 +97,7 @@ function Login() {
         <p>{mode === 'forgot' ? 'Reset password akunmu' : 'Masuk untuk mulai mencatat'}</p>
       </div>
 
-      <div className="form-section auth-card">
+      <div className="auth-card">
         {mode !== 'forgot' && (
           <div className="auth-tabs">
             <button
@@ -118,7 +118,7 @@ function Login() {
         )}
 
         {message && <div className={`auth-message ${message.type}`}>{message.text}</div>}
-
+bcdd
         {mode !== 'forgot' && (
           <>
             <button type="button" className="btn-google" onClick={handleGoogleLogin}>

@@ -2,49 +2,48 @@
    1. RESET & BASE (Kunci Responsif)
    ========================================= */
 * {
-  box-sizing: border-box; /* Sangat penting: agar padding tidak menambah lebar elemen */
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  /* Latar belakang abu-abu yang akan terlihat saat dibuka di PC */
   background-color: #f3f4f6; 
   font-family: 'Inter', -apple-system, sans-serif;
-  
-  /* Flexbox untuk menengahkan aplikasi di layar besar */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
   color: #1f2937;
-  
 }
 
-
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 /* =========================================
    2. WADAH UTAMA (app-container)
    ========================================= */
 .app-container {
   width: 100%;
-  max-width: 480px; /* Batas maksimal lebar ala Smartphone */
+  max-width: 480px; 
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: #ffffff; /* Latar putih persis seperti gambar */
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-/* ATURAN KHUSUS UNTUK LAYAR PC/TABLET (Lebar > 480px) */
 @media (min-width: 481px) {
   .app-container {
-    min-height: 90vh; /* Sedikit jarak dari atas dan bawah layar PC */
+    min-height: 90vh; 
     margin-top: 5vh;
     margin-bottom: 5vh;
-    border-radius: 24px; /* Sudut membulat seperti HP fisik */
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* Bayangan estetik */
-    overflow: hidden; /* Mencegah isi aplikasi tumpah ke luar batas */
+    border-radius: 24px; 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); 
+    overflow: hidden; 
   }
 }
 
@@ -54,7 +53,7 @@ body {
 .app-header {
   background-color: #2563eb;
   color: white;
-  padding: 30px 20px 40px;
+  padding: 30px 20px 50px; /* Padding bawah ditambah agar melengkung rapi */
   border-radius: 0 0 24px 24px;
 }
 
@@ -86,10 +85,10 @@ body {
    ========================================= */
 .form-section {
   background: white;
-  margin: -24px 20px 20px;
-  padding: 20px;
+  margin: -30px 20px 20px; /* Ditarik ke atas agar menimpa header biru */
+  padding: 24px 20px;
   border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   z-index: 10;
   position: relative;
 }
@@ -100,36 +99,34 @@ body {
   display: block;
   font-size: 13px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #4b5563;
 }
 
 .clean-input, .clean-select {
   width: 100%;
   padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s;
-  background-color: #f9fafb;
+  background-color: #ffffff;
 }
 
 .clean-input:focus, .clean-select:focus {
   border-color: #2563eb;
-  background-color: #ffffff;
 }
 
-/* Baris input sejajar yang akan turun ke bawah jika layar HP terlalu kecil */
 .row-inputs {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap; /* Kunci responsif: membolehkan elemen turun baris */
+  flex-wrap: wrap; 
 }
 
 .row-inputs > div {
   flex: 1;
-  min-width: 130px; /* Batas sempit agar dropdown tidak terpotong */
+  min-width: 130px; 
 }
 
 .btn-submit {
@@ -143,6 +140,7 @@ body {
   cursor: pointer;
   font-size: 15px;
   transition: 0.2s;
+  margin-top: 8px;
 }
 
 .btn-submit:disabled {
@@ -158,18 +156,22 @@ body {
 .list-section { padding: 0 20px 20px; flex: 1; }
 
 .section-title {
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   margin-bottom: 16px;
   color: #1f2937;
 }
 
+/* Kolom pencarian oval persis seperti di gambar */
 .search-input {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  padding: 12px 16px;
+  border: none;
+  background-color: #f3f4f6;
+  border-radius: 24px;
+  margin-bottom: 24px;
   font-size: 14px;
+  outline: none;
 }
 
 .trx-card {
@@ -177,10 +179,13 @@ body {
   justify-content: space-between;
   align-items: center;
   background: white;
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  border: 1px solid #f3f4f6;
+  padding: 16px 0;
+  border-bottom: 1px solid #f3f4f6; /* Garis tipis pembatas */
+  margin-bottom: 4px;
+}
+
+.trx-card:last-child {
+  border-bottom: none;
 }
 
 .trx-left {
@@ -197,6 +202,6 @@ body {
 
 .trx-category { font-size: 12px; color: #6b7280; }
 
-.trx-amount { font-weight: 700; font-size: 14px; }
-.amount-in { color: #16a34a; }
-.amount-out { color: #dc2626; }
+.trx-amount { font-weight: 700; font-size: 15px; }
+.amount-in { color: #10b981; }
+.amount-out { color: #ef4444; }
